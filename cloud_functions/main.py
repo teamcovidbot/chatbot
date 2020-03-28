@@ -1,5 +1,6 @@
 import json
-import  os
+import os
+
 def covidbot_result(request):
     """Responds to any HTTP request.
     Args:
@@ -18,10 +19,13 @@ def covidbot_result(request):
     if request.form and request.form.get('Memory'):
         payload = request.form.get('Memory')
 
+    payload = json.loads(payload)
+
     # Real payload processing starts here
     given_answers = parse_twilio(payload)
     correct_answers = get_correct_answers(get_questions())
     score = calculate_score(given_answers, correct_answers)
+
 
     return json.dumps({"actions": [{"say" : f"your score is {score}"}]})
 
@@ -180,6 +184,7 @@ QUESTIONS = {
         }
     ]
 }
+
 
 def parse_twilio(payload: dict) -> dict:
     """Parses twilio_payload and returns answers.
