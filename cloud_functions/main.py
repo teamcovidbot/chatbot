@@ -1,5 +1,6 @@
 import json
-import  os
+import os
+
 
 def covidbot_result(request):
     """Responds to any HTTP request.
@@ -21,11 +22,12 @@ def covidbot_result(request):
     correct_answers = get_correct_answers(get_questions())
     score = calculate_score(given_answers, correct_answers)
     image_url = determine_image(score)
+    message = determine_message(score)
 
     return json.dumps({
         "actions": [
             {
-                "say": "response"
+                "say": message
             },
             {
                 "show": {
@@ -43,10 +45,17 @@ def covidbot_result(request):
 
 
 def determine_image(score):
-    if(score < 6):
+    if score < 6:
         return os.environ["BAD_IMAGE_URL"]
     else:
         return os.environ["GOOD_IMAGE_URL"]
+
+
+def determine_message(score):
+    if score < 6:
+        return f"Your score is {score}! There is still some room for improvement!"
+    else:
+        return f"Your score is {score}! You are a COVID-19 prevention expert!"
 
 
 def get_questions():
@@ -222,9 +231,10 @@ def parse_twilio(payload: dict) -> dict:
     """
     try:
         answers = payload['twilio']['collected_data']['covid_19_questionary']['answers']
-        return {q:answers[q]['answer'] for q in answers.keys()}
+        return {q: answers[q]['answer'] for q in answers.keys()}
     except KeyError:
         return {}
+
 
 def get_correct_answers(q_and_a: dict) -> dict:
     """Gets the correct answers from the reference q_and_a
@@ -254,6 +264,7 @@ def get_correct_answers(q_and_a: dict) -> dict:
         return {}
     except KeyError:
         return {}
+
 
 def calculate_score(given_answers: dict, correct_answers: dict) -> int:
     """Returns the number of correct answers.
