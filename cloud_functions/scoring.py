@@ -1,3 +1,4 @@
+import json
 # Inspired by https://cloud.google.com/functions/docs/quickstart#functions-deploy-command-python
 def score(request):
     """HTTP Cloud Function.
@@ -9,4 +10,4 @@ def score(request):
         Response object using `make_response`
         <http://flask.pocoo.org/docs/1.0/api/#flask.Flask.make_response>.
     """
-    return {'score': 100}
+    return json.dumps({'score': 100}, indent=2)
