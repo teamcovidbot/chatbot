@@ -52,3 +52,72 @@ def valid_req_payload():
             }
         }
     }
+
+@pytest.fixture(scope='module')
+def q_and_a():
+    return {
+    "questions": [{
+			"name": "question1",
+            "question": "First question",
+            "answers": [{
+                    "order": "D",
+                    "answer": "whatever_D",
+                    "correct": True
+                }, {
+                    "order": "A",
+                    "answer": "whatever_A",
+                    "correct": False
+                }, {
+                    "order": "C",
+                    "answer": "whatever_C",
+                    "correct": False
+                }, {
+                    "order": "B",
+                    "answer": "whatever-B",
+                    "correct": False
+                }
+            ]
+        }, {
+			"name": "question2",
+            "question": "Second question",
+            "answers": [{
+                    "order": "A",
+                    "answer": "whatever_A",
+                    "correct": True
+                }, {
+                    "order": "C",
+                    "answer": "whatever_B",
+                    "correct": False
+                }, {
+                    "order": "B",
+                    "answer": "whatever_C",
+                    "correct": False
+                }, {
+                    "order": "D",
+                    "answer": "whatever_D",
+                    "correct": False
+                }
+            ]
+        }, {
+			"name": "question3",
+            "question": "Third question",
+            "answers": [{
+                    "order": "A",
+                    "answer": "whatever_A",
+                    "correct": True
+                }, {
+                    "order": "C",
+                    "answer": "whatever_C",
+                    "correct": False
+                }, {
+                    "order": "D",
+                    "answer": "whatever_C",
+                    "correct": False
+                }, {
+                    "order": "B",
+                    "answer": "whatever_B",
+                    "correct": False
+                }
+            ]
+        }]
+    }

@@ -192,14 +192,43 @@ def parse_twilio(payload: dict) -> dict:
         }
     }
 
-    RETURNS: {"question1": "D",
-              "question2": "A",
-              ...
-             }
-    
+    RETURN: {"question1": "D",
+             "question2": "A",
+             ...
+            }
     """
     try:
         answers = payload['twilio']['collected_data']['covid_19_questionary']['answers']
         return {q:answers[q]['answer'] for q in answers.keys()}
+    except KeyError:
+        return {}
+
+def get_correct_answers(q_and_a: dict) -> dict:
+    """Gets the correct answers from the reference q_and_a
+    q_and_a: {
+        "questions": [{
+			"name": "question1",
+            "question": "I am allowed to go outside for which case?",
+            "answers": [...]
+        },
+        {...}]
+    }
+
+    RETURN: {"question1": "D",
+             "question2": "A",
+             ...
+            }
+    """
+    try:
+        result = {}
+        for q_a in q_and_a["questions"]:
+            key = q_a["name"]
+            values = [a["order"] for a in q_a["answers"] if a["correct"]]
+            print(values)
+            assert len(values) == 1
+            result[key] = values[0]
+        return result
+    except AssertionError:
+        return {}
     except KeyError:
         return {}
