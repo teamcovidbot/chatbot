@@ -17,15 +17,13 @@ def covidbot_result(request):
     # Next line is how we expect real data to come in from Twilio
     if request.form and request.form.get('Memory'):
         payload = request.form.get('Memory')
-    print(payload)
 
     # Real payload processing starts here
-    if request.args and 'message' in request.args:
-        return request.args.get('message')
-    elif request_json and 'message' in request_json:
-        return request_json['message']
-    else:
-        return json.dumps({'score': 100})
+    given_answers = parse_twilio(payload)
+    correct_answers = get_correct_answers(get_questions())
+    score = calculate_score(given_answers, correct_answers)
+
+    return json.dumps({"actions": [{"say" : f"your score is {score}"}]})
 
 def get_questions():
     # TODO: Read in questions from a file
@@ -224,7 +222,6 @@ def get_correct_answers(q_and_a: dict) -> dict:
         for q_a in q_and_a["questions"]:
             key = q_a["name"]
             values = [a["order"] for a in q_a["answers"] if a["correct"]]
-            print(values)
             assert len(values) == 1
             result[key] = values[0]
         return result

@@ -9,7 +9,7 @@ class TestCovidbotResult:
             self, app, valid_req_payload):
         with app.test_request_context(
                 '/',
-                data={'Memory': valid_req_payload}):
+                json=valid_req_payload):
             result = covidbot_result(flask.request)
             assert isinstance(result, str)
 
@@ -17,7 +17,14 @@ class TestCovidbotResult:
             self, app, valid_req_payload):
         with app.test_request_context(
                 '/', 
-                data={'Memory': valid_req_payload}):
+                json=valid_req_payload):
             result = covidbot_result(flask.request)
-            print(result)
             assert isinstance(result, (dict, str))
+
+    def test_returns_expected_score(
+            self, app, valid_req_payload):
+        with app.test_request_context(
+                '/',
+                json=valid_req_payload):
+            result = covidbot_result(flask.request)
+            assert json.loads(result) == {"actions": [{"say" : "your score is 2"}]}
