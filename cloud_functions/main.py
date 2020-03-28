@@ -232,3 +232,23 @@ def get_correct_answers(q_and_a: dict) -> dict:
         return {}
     except KeyError:
         return {}
+
+def calculate_score(given_answers: dict, correct_answers: dict) -> int:
+    """Returns the number of correct answers.
+    given_answers: {"question1": "X",
+                    "question2": "Y",
+                    ...
+                    "questionN": "Z"}
+
+    correct_answers: {"question1": "A",
+                      "question2": "B",
+                      ...
+                      "questionN": "C"}
+
+    RETURN: number of correct answers
+    """
+    result = 0
+    for q, a in given_answers.items():
+        if correct_answers.get(q) == a:
+            result += 1
+    return result
