@@ -21,7 +21,7 @@ def valid_req_payload():
                     "answers": {
                         "question2": {
                             "confirm_attempts":0,
-                            "answer":"D",
+                            "answer":"A",
                             "filled":True,
                             "type":"Multiple_Choice_Value",
                             "confirmed":False,
@@ -36,7 +36,7 @@ def valid_req_payload():
                             "validate_attempts":1,
                             "attempts":1},
                         "question3":{
-                            "answer":"D",
+                            "answer":"C",
                             "type":"Multiple_Choice_Value",
                             "filled":True,
                             "attempts":1,

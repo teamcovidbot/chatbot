@@ -182,3 +182,24 @@ QUESTIONS = {
         }
     ]
 }
+
+def parse_twilio(payload: dict) -> dict:
+    """Parses twilio_payload and returns answers.
+    payload: {
+        "twilio": {
+            "messaging.whatsapp": {...},
+            "collected_data": {...}
+        }
+    }
+
+    RETURNS: {"question1": "D",
+              "question2": "A",
+              ...
+             }
+    
+    """
+    try:
+        answers = payload['twilio']['collected_data']['covid_19_questionary']['answers']
+        return {q:answers[q]['answer'] for q in answers.keys()}
+    except KeyError:
+        return {}
