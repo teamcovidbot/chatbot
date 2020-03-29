@@ -25,11 +25,18 @@ def covidbot_result(request):
     score = calculate_score(given_answers, correct_answers)
     image_url = determine_image(score)
     message = determine_message(score)
+    suggestions = get_suggestions()
 
     return json.dumps({
         "actions": [
             {
+                "say": "Even if you cannot sing, you can still hum happy birthday twice. That way you are certain your hands are clean."
+            },
+            {
                 "say": message
+            },
+            {
+                "say": suggestions
             },
             {
                 "show": {
@@ -54,10 +61,21 @@ def determine_image(score):
 
 
 def determine_message(score):
-    if score < 6:
-        return f"Your score is {score}! There is still some room for improvement!"
+    if score < 5:
+        return f"That was the last question! Your score is {score} out of 7. You are a danger to humankind."
+    elif score < 6:
+        return f"That was the last question. Your score is {score} out of 7. An almost perfect score. If you get everything right, I have a surprise for you"
     else:
-        return f"Your score is {score}! You are a COVID-19 prevention expert!"
+        return "That was the last question. You had a perfect score! Here is a drawing you can use on social media to raise awareness!"
+
+
+def get_suggestions():
+    return """Reminder:\n
+- you are required to stay at home to avoid contact outside of your family as much as possible\n
+- work from home if your profession allows for it\n
+- Non-essential shops and retail outlets will remain closed\n
+- Maintain the required distance when taking public transport.\n
+            """
 
 
 def get_questions():
