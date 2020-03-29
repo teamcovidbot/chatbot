@@ -1,4 +1,4 @@
-# Hack The Crisis - Covitbot
+# Hack The Crisis - Covidbot
 
 The cloud functions are in `cloud_functions/main.py`
 
