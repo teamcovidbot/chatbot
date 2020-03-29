@@ -23,4 +23,4 @@ $ ./bin/prepare_zip.sh
 [...]
 ````
 
-For the moment, deployment of the ZIP file to [Google Cloud][https://console.cloud.google.com/functions/details/europe-west1/covidbot-result?project=teamcovidbot&tab=general] is done manually.
+For the moment, deployment to is done manually.
