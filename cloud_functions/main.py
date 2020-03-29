@@ -61,9 +61,9 @@ def determine_image(score):
 
 
 def determine_message(score):
-    if score < 5:
-        return f"That was the last question! Your score is {score} out of 7. You are a danger to humankind."
-    elif score < 6:
+    if score < 6:
+        return f"That was the last question! Your score is {score} out of 7. I'm sure you can do better than that!"
+    elif score < 7:
         return f"That was the last question. Your score is {score} out of 7. An almost perfect score. If you get everything right, I have a surprise for you"
     else:
         return "That was the last question. You had a perfect score! Here is a drawing you can use on social media to raise awareness!"

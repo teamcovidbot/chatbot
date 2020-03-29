@@ -9,7 +9,7 @@ class TestDetermineMessage:
         actual = determine_message(test_score)
         assert expected_substring in actual
 
-    @pytest.mark.parametrize('test_score', range(6,8))
+    @pytest.mark.parametrize('test_score', range(7,8))
     def test_returns_message_with_congrats_for_score_gte_six(self, test_score):
         expected_substring = f"You had a perfect score!"
         actual = determine_message(test_score)
