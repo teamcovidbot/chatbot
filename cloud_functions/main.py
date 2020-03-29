@@ -11,11 +11,13 @@ def covidbot_result(request):
         Response object using
         `make_response <http://flask.pocoo.org/docs/1.0/api/#flask.Flask.make_response>`.
     """
+    payload = None
     # Next line is how we expect real data to come in from Twilio
     if request.form and request.form.get('Memory'):
-        payload = request.form.get('Memory')
-
-    payload = json.loads(payload)
+        payload = json.loads(request.form.get('Memory'))
+    else:
+        # The normal way
+        payload = request.get_json()
 
     # Real payload processing starts here
     given_answers = parse_twilio(payload)
