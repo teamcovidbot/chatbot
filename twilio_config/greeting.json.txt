@@ -1,0 +1,10 @@
+{
+	"actions": [
+		{
+			"say": "Hi there! I am the CovidBot🤖 Would you like to play a little quiz? Don't worry, being a bot, I cannot transmit the virus 🙄🤣"
+		},
+		{
+			"listen": true
+		}
+	]
+}

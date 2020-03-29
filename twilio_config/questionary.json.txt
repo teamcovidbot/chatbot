@@ -1,0 +1,55 @@
+{
+	"actions": [
+		{
+			"say": "Ok. I have seven questions for you. If you get them right, I may have a surprise for you.\n\nReply with the letter in front of the correct answer."
+		},
+		{
+			"collect": {
+				"name": "covid_19_questionary",
+				"questions": [
+					{
+						"question": "Here is the first question: *in which case are you allowed to go outside?*\n\n A: Going for a run with my friends in the park.\n\n B: Taking the kids to the beach for the day.\n\n C: Discussing a mortgage loan with a bank representative.\n\n D: Picking up my medicine from the pharmacist.",
+						"name": "question1",
+						"type": "Multiple_Choice_Value"
+					},
+					{
+						"question": "💊 Unfortunately, we must all avoid unnecessary trips. Luckily, going to the pharmacist is considered an essential trip.\n\n Here is the second question: *can you still enjoy a bicycle ride?*\n\n A: Yes, I can enjoy a nice bike ride with my household.\n B: No, with the exception of Sundays. On Sundays I am allowed to cycle with my family to the nearest park.\n C: Yes. As long as I know the group of people I am cycling with and don't go further than 40 kilometers.\n D: No. This is not a necessary trip.",
+						"name": "question2",
+						"type": "Multiple_Choice_Value"
+					},
+					{
+						"question": "🚴 ️Outdoor exercise is recommended. You can exercise with the people you live with or with one friend. But always keep your distance.\n\nTwo down, five to go. *When should you wash your hands?*\n\n A: When I come home from grocery shopping.\n B: Every half hour or so.\n C: Around ten times a day.\n D: When I wake up and when I go to bed.",
+						"name": "question3",
+						"type": "Multiple_Choice_Value"
+					},
+					{
+						"question": "🏬 Good hygiene requires you to wash your hands regularly, e.g. before and after handling food or after sneezing. It is a good idea to wash your hands when you come home from grocery shopping.\n\nLet's see if you know this one: *what can you do to protect yourself against covid-19?*\n\n A: Eating fruit with a lot of Vitamin C.\n B: Follow government guidelines.\n C: Drink alcohol.\n D: Smoke cigarettes.",
+						"name": "question4",
+						"type": "Multiple_Choice_Value"
+					},
+					{
+						"question": "Eating lots of fruit is never wrong, however it will not protect you against covid-19. To protect yourself it is recommended to follow the government guidelines.\n\n Over halfway there! *What are children still allowed to do?*\n\n A: Play in the garden with the children of my neighbour.\n B: Play in the street with their siblings.\n C: Go to the children's playground but making sure to alway keep their social distance from the other children.\n D: Children must stay indoors.",
+						"name": "question5",
+						"type": "Multiple_Choice_Value"
+					},
+					{
+						"question": "Of course children can play outside, but only with their siblings.\n\n Great going. Here is question number six for you.\n *What do you do when you see that others are not following the rules?*\n\n A: I start filming and publicly shame them on social media.\n B: If they can break the rules, so can I!\n C: I pick a fight.\n D: I call the local authorities if they do not listen to reason.",
+						"name": "question6",
+						"type": "Multiple_Choice_Value"
+					},
+					{
+						"question": "👮 It's probably not a good idea to put yourself in a dangerous situation. If persuasion does not work, the local authorities might have more success. \n\n Last question: *How long do I have to wash my hands?*\n\n A: Till they look clean.\n B: About 10 seconds should be enough to wash off most germs.\n C: Between 40 and 60 seconds or as long as it takes you to sing 'Happy Birthday' twice.\n D: It depends on what I have been doing with my hands.",
+						"name": "question7",
+						"type": "Multiple_Choice_Value"
+					}
+				],
+				"on_complete": {
+					"redirect": {
+						"method": "POST",
+						"uri": "https://europe-west1-teamcovidbot.cloudfunctions.net/covidbot-result"
+					}
+				}
+			}
+		}
+	]
+}
