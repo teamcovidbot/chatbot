@@ -46,9 +46,10 @@ class TestCovidbotResult:
                 data={'Memory': json.dumps(valid_req_payload)}):
             result: str = covidbot_result(flask.request)
             loaded: dict = json.loads(result)
+            i = 1 # Hardcoded
             assert 'actions' in loaded
-            assert 'say' in loaded.get('actions')[0]
-            assert 'Your score is 2!' in loaded['actions'][0]['say']
+            assert 'say' in loaded.get('actions')[i]
+            assert 'Your score is 2' in loaded['actions'][i]['say']
 
     def test_returns_result_with_expected_image_url_in_show_images(
             self, app, valid_req_payload):
@@ -57,8 +58,9 @@ class TestCovidbotResult:
                 data={'Memory': json.dumps(valid_req_payload)}):
             result: str = covidbot_result(flask.request)
             loaded: dict = json.loads(result)
+            i = 3 # Hardcoded
             assert 'actions' in loaded
-            assert 'show' in loaded.get('actions')[1]
-            assert 'images' in loaded['actions'][1]['show']
-            assert 'url' in loaded['actions'][1]['show']['images'][0]
-            assert BAD_IMAGE_URL in loaded['actions'][1]['show']['images'][0]['url']
+            assert 'show' in loaded.get('actions')[i]
+            assert 'images' in loaded['actions'][i]['show']
+            assert 'url' in loaded['actions'][i]['show']['images'][0]
+            assert BAD_IMAGE_URL in loaded['actions'][i]['show']['images'][0]['url']
