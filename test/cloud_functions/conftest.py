@@ -1,6 +1,9 @@
 from flask import Flask, Request
 import pytest
 
+GOOD_IMAGE_URL='http://some.host/good.jpg'
+BAD_IMAGE_URL='http://some.host/bad.jpg'
+
 @pytest.fixture(scope='module')
 def app():
     app = Flask(__name__)
