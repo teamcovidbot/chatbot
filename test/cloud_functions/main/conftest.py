@@ -15,9 +15,9 @@ def valid_req_payload():
         "twilio": {
             "messaging.whatsapp":
                 {
-                    "To":"whatsapp:+14155238886",
-                    "From":"whatsapp:+32478585416",
-                    "MessageSid":"SM53501e9374ef5279e93dc384b74f6f03"
+                    "To":"whatsapp:REDACTED",
+                    "From":"whatsapp:REDACTED",
+                    "MessageSid":"REDACTED"
                 },
             "collected_data": {
                 "covid_19_questionary": {

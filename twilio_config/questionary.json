@@ -46,7 +46,7 @@
 				"on_complete": {
 					"redirect": {
 						"method": "POST",
-						"uri": "https://europe-west1-teamcovidbot.cloudfunctions.net/covidbot-result"
+						"uri": "REDACTED"
 					}
 				}
 			}
