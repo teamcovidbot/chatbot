@@ -111,3 +111,7 @@ data/
 
 # secrets
 secrets.txt
+
+# IntelliJ
+*.iml
+.idea
