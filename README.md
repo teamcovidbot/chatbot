@@ -23,4 +23,4 @@ $ ./bin/prepare_zip.sh
 [...]
 ````
 
-For the moment, deployment to is done manually.
+For the moment, deployment Google Cloud Platform and Twilio is done manually.
